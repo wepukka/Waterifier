@@ -1,0 +1,22 @@
+.authPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  flex-direction: column;
+  color: white;
+}
+
+.authPage h1 {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.authPage a {
+  cursor: pointer;
+}
+
+.authPage a:hover {
+  transform: scale(1.1);
+}
