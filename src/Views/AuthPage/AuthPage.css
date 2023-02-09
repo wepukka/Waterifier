@@ -1,11 +1,12 @@
 .authPage {
   display: flex;
-  justify-content: center;
+  flex: 1;
   align-items: center;
   text-align: center;
-  height: 100vh;
   flex-direction: column;
+  justify-content: center;
   color: white;
+
 }
 
 .authPage h1 {
@@ -19,4 +20,12 @@
 
 .authPage a:hover {
   transform: scale(1.1);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .authPage {
+    justify-content: flex-start;
+    margin-top: 40px;
+  }
 }

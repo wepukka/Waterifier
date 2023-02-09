@@ -31,27 +31,31 @@ function App() {
 
   if (!loggedIn) {
     return (
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route
-            exact
-            path="/authenticate"
-            element={<AuthPage setLoggedIn={setLoggedIn} />}
-          />
-        </Routes>
-      </Router>
+      <div className="App">
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route
+              exact
+              path="/authenticate"
+              element={<AuthPage setLoggedIn={setLoggedIn} />}
+            />
+          </Routes>
+        </Router>
+      </div>
     );
   } else {
     return (
-      <Router>
-        <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Router>
+      <div className="App">
+        <Router>
+          <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Router>
+      </div>
     );
   }
 }
