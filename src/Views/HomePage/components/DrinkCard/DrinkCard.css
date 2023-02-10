@@ -1,0 +1,34 @@
+.drink-card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(59, 133, 175);
+  height: 100%;
+}
+
+.drink-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100%;
+  gap: 20px;
+}
+
+.drink-card p {
+  padding: 0;
+  margin: 0;
+}
+
+.drink-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass-images {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
