@@ -3,10 +3,15 @@ import("./DrinkCard.css");
 import { useState, useEffect } from "react";
 import { Paper } from "@mui/material";
 import waterglass from "../../../../assets/waterglass.png";
+import WaterMeter from "../WaterMeter/WaterMeter";
+import useWindowSize from "../../../../hooks/useWindowSize";
+
 
 export default function DrinkCard(props) {
   const { setGlassAmount, glassAmount, isCalculated, percentage } = props;
   const [message, setMessage] = useState("");
+
+  const size = useWindowSize();
 
   const drinkWater = () => {
     if (percentage === 100) {
@@ -34,12 +39,16 @@ export default function DrinkCard(props) {
           button below you'll drink one glass of water.
         </p>
         <p>
-          The progress bar on top shows how much you would need to drink to
-          achieve your recommended water intake.
+          Progress bar tracks your recommended daily water intake
         </p>
+        {size.width <= 600 && <WaterMeter
+        percentage={percentage} 
+        showPercentage={false}
+        /> }
         <button className="drink-button" onClick={() => drinkWater()}>
           DRINK
         </button>
+        
         <button
           className="drink-button"
           onClick={() => {
@@ -49,6 +58,7 @@ export default function DrinkCard(props) {
         >
           RESET
         </button>
+      
         <div className="glass-images">
           {Array.from({ length: glassAmount }).map((_, index) => (
             <img key={index} width="20" height="50" src={waterglass} />

@@ -3,6 +3,7 @@ import WaterMeter from "./components/WaterMeter/WaterMeter";
 import StatCard from "./components/StatsCard/StatsCard";
 import DrinkCard from "./components/DrinkCard/DrinkCard";
 import { useState, useEffect } from "react";
+import useWindowSize from "../../hooks/useWindowSize";
 
 export default function HomePage() {
   const [dailyWaterIntake, setDailyWaterIntake] = useState(0);
@@ -10,7 +11,9 @@ export default function HomePage() {
   const [isCalculated, setIsCalculated] = useState(false);
   const [percentage, setPercentage] = useState(0);
 
-  useEffect(() => {
+  const size = useWindowSize();
+
+  useEffect(() => { 
     let waterAmount = glassAmount * 0.25;
     let waterPercent = (waterAmount / dailyWaterIntake) * 100;
 
@@ -24,7 +27,10 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <WaterMeter percentage={percentage} />
+     { size.width > 600 &&  <WaterMeter
+        percentage={percentage}
+        showPercentage={true}
+        />  }
       <div className="home-page-cards">
         <StatCard
           setDailyWaterIntake={setDailyWaterIntake}

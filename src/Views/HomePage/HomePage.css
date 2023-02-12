@@ -8,6 +8,16 @@
 
 .home-page-cards {
   display: flex;
+  flex-direction: row;
   flex: 1;
   gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-page-cards {
+    flex-direction: column
+  }
+  .water-meter {
+    display: none;
+  }
 }
