@@ -13,32 +13,32 @@ export default function HomePage() {
 
   const size = useWindowSize();
 
-  useEffect(() => { 
+  useEffect(() => {
     let waterAmount = glassAmount * 0.25;
     let waterPercent = (waterAmount / dailyWaterIntake) * 100;
 
     if (waterPercent > 100) {
-      return setPercentage(100);
+      setPercentage(100);
     }
     if (!isNaN(waterPercent)) {
-      return setPercentage((waterAmount / dailyWaterIntake) * 100);
+      setPercentage((waterAmount / dailyWaterIntake) * 100);
     }
   }, [dailyWaterIntake, glassAmount]);
 
   return (
     <div className="home-page">
-     { size.width > 600 &&  <WaterMeter
-        percentage={percentage}
-        showPercentage={true}
-        />  }
+      {size.width > 600 && (
+        <WaterMeter percentage={percentage} showPercentage={true} />
+      )}
       <div className="home-page-cards">
         <StatCard
+          dailyWaterIntake={dailyWaterIntake}
           setDailyWaterIntake={setDailyWaterIntake}
           setIsCalculated={setIsCalculated}
         />
         <DrinkCard
-          setGlassAmount={setGlassAmount}
           glassAmount={glassAmount}
+          setGlassAmount={setGlassAmount}
           isCalculated={isCalculated}
           percentage={percentage}
         />

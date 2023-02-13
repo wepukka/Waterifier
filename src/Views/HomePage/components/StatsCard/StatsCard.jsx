@@ -4,25 +4,28 @@ import { useState } from "react";
 import { Paper } from "@mui/material";
 import { NumInput } from "./components/NumInput/NumInput";
 
-export default function StatCard(props) {
+export default function StatCard({
+  dailyWaterIntake,
+  setDailyWaterIntake,
+  setIsCalculated,
+}) {
+  const INTAKE_MESSAGE = "Your recommended daily water intake is: ";
   const [weight, setWeight] = useState(0);
   const [exercise, setExercise] = useState(0);
-  const [recommendedWater, setRecommendedWater] = useState("");
-  const INTAKE_MESSAGE = "Your recommended daily water intake is: ";
+  const [errorMsg, setErrorMsg] = useState("");
 
   const calculateWaterIntake = () => {
     if (weight <= 0 || weight === undefined) {
       document.getElementById("weight").classList.add("body-weight-error");
-      setRecommendedWater("Invalid body weight");
+      setErrorMsg("Invalid body weight");
     } else {
       document.getElementById("weight").classList.remove("body-weight-error");
+      setErrorMsg("");
+      // Water 0.035L per kg & 0.01L per exercise minute
+      let waterAmount = weight * 0.035 + exercise * 0.0118296;
 
-      let weightWater = weight * 0.035; // 35ml per kg //
-      let exerciseWater = exercise * 0.0118296; // ~ 0.01 liter per exercise min
-
-      setRecommendedWater((weightWater + exerciseWater).toFixed(2) + " liters"); // 35ml per kg //
-      props.setDailyWaterIntake((weightWater + exerciseWater).toFixed(2));
-      props.setIsCalculated(true);
+      setDailyWaterIntake(waterAmount.toFixed(2));
+      setIsCalculated(true);
     }
   };
 
@@ -47,7 +50,10 @@ export default function StatCard(props) {
           Calculate
         </button>
         <p>
-          {INTAKE_MESSAGE} <strong>{recommendedWater}</strong>
+          {INTAKE_MESSAGE}
+          <strong>
+            {errorMsg !== "" ? errorMsg : dailyWaterIntake + " liters"}
+          </strong>
         </p>
       </div>
     </Paper>
