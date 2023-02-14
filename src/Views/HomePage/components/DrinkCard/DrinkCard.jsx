@@ -25,7 +25,6 @@ export default function DrinkCard({
 
   const reset = () => {
     setGlassAmount(0);
-    setMessage("");
   };
 
   return (
@@ -39,11 +38,11 @@ export default function DrinkCard({
         {size.width <= 600 && (
           <WaterMeter percentage={percentage} showPercentage={false} />
         )}
-        <button className="drink-button" onClick={() => drinkWater()}>
+        <button className="custom-calc-button" onClick={() => drinkWater()}>
           DRINK
         </button>
         <button
-          className="drink-button"
+          className="custom-calc-button"
           onClick={() => {
             reset();
           }}

@@ -5,7 +5,6 @@
   border-width: 1px;
   border-style: solid;
   border-color: rgb(59, 133, 175);
-  height: 100%;
 }
 
 .drink-container {
@@ -33,7 +32,5 @@
   flex-wrap: wrap;
 }
 
-
 @media only screen and (max-width: 600px) {
-
 }

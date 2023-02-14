@@ -1,8 +1,11 @@
 import("./HomePage.css");
+import { useState, useEffect } from "react";
+
 import WaterMeter from "./components/WaterMeter/WaterMeter";
 import StatCard from "./components/StatsCard/StatsCard";
 import DrinkCard from "./components/DrinkCard/DrinkCard";
-import { useState, useEffect } from "react";
+import WaterInfo from "./components/WaterInfo/WaterInfo";
+
 import useWindowSize from "../../hooks/useWindowSize";
 
 export default function HomePage() {
@@ -18,10 +21,11 @@ export default function HomePage() {
     let waterPercent = (waterAmount / dailyWaterIntake) * 100;
 
     if (waterPercent > 100) {
-      setPercentage(100);
+      return setPercentage(100);
     }
+
     if (!isNaN(waterPercent)) {
-      setPercentage((waterAmount / dailyWaterIntake) * 100);
+      return setPercentage((waterAmount / dailyWaterIntake) * 100);
     }
   }, [dailyWaterIntake, glassAmount]);
 
@@ -42,6 +46,7 @@ export default function HomePage() {
           isCalculated={isCalculated}
           percentage={percentage}
         />
+        <WaterInfo />
       </div>
     </div>
   );

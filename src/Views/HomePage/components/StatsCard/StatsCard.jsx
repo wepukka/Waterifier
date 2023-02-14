@@ -46,7 +46,10 @@ export default function StatCard({
           <NumInput value={exercise} setValue={setExercise} id={"exercise"} />
         </div>
 
-        <button className="calc-button" onClick={() => calculateWaterIntake()}>
+        <button
+          className="custom-calc-button"
+          onClick={() => calculateWaterIntake()}
+        >
           Calculate
         </button>
         <p>
