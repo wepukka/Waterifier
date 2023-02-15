@@ -1,6 +1,7 @@
 import("./Shop.css");
 import("../../assets/global.css");
 import { useEffect, useState } from "react";
+import ScrollableItemList from "./components/ScrollableItemList/ScrollableItemList";
 
 export default function Shop({ setIsShopping }) {
   useEffect(() => {
@@ -12,5 +13,9 @@ export default function Shop({ setIsShopping }) {
       setIsShopping(false);
     };
   }, []);
-  return <div className="shop">WATER SHOP</div>;
+  return (
+    <div className="shop">
+      <ScrollableItemList />
+    </div>
+  );
 }
