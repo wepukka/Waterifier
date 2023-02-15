@@ -9,7 +9,7 @@
 .home-page-cards {
   display: flex;
   flex-direction: row;
-  flex: 1;
+
   gap: 20px;
 }
 

@@ -9,7 +9,6 @@ export default function StatCard({
   setDailyWaterIntake,
   setIsCalculated,
 }) {
-  const INTAKE_MESSAGE = "Your recommended daily water intake is: ";
   const [weight, setWeight] = useState(0);
   const [exercise, setExercise] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
@@ -53,7 +52,7 @@ export default function StatCard({
           Calculate
         </button>
         <p>
-          {INTAKE_MESSAGE}
+          Your recommended daily water intake is:
           <strong>
             {errorMsg !== "" ? errorMsg : dailyWaterIntake + " liters"}
           </strong>
