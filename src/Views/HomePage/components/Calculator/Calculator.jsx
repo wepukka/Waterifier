@@ -1,10 +1,10 @@
-import("./StatsCard.css");
+import("./Calculator.css");
 import("../../../../assets/global.css");
 import { useState } from "react";
 import { Paper } from "@mui/material";
 import { NumInput } from "./components/NumInput/NumInput";
 
-export default function StatCard({
+export default function Calculator({
   dailyWaterIntake,
   setDailyWaterIntake,
   setIsCalculated,
@@ -29,16 +29,16 @@ export default function StatCard({
   };
 
   return (
-    <Paper className="calc-card" elevation={3}>
+    <Paper className="calculator" elevation={3}>
       <h1 style={{ textAlign: "center" }}>Water calculator</h1>
-      <div className="card-container">
+      <div className="calculator-container">
         <div>
           <p>
             This calculator calculates the amount of water you should drink
             daily based on your weight and activity level
           </p>
         </div>
-        <div className="calc-input">
+        <div className="calculator-input">
           <div className="input-info">Body weight (kgs):</div>
           <NumInput value={weight} setValue={setWeight} id={"weight"} />
           <div className="input-info">Daily exercise (min):</div>
@@ -52,7 +52,7 @@ export default function StatCard({
           Calculate
         </button>
         <p>
-          Your recommended daily water intake is:
+          {"Your recommended daily water intake is: "}
           <strong>
             {errorMsg !== "" ? errorMsg : dailyWaterIntake + " liters"}
           </strong>

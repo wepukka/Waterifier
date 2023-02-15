@@ -1,4 +1,4 @@
-.calc-card {
+.calculator {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -8,11 +8,10 @@
   border-color: rgb(59, 133, 175);
 }
 
-.card-container {
+.calculator-container {
   display: flex;
   flex-direction: column;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 0px 30px 20px 30px;
   gap: 20px;
 }
 
@@ -22,7 +21,7 @@
   margin: 0;
 }
 
-.calc-input div:nth-child(3) {
+.calculator-input div:nth-child(3) {
   margin-top: 10px;
 }
 

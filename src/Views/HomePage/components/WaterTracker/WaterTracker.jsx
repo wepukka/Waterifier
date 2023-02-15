@@ -1,11 +1,11 @@
 import("../../../../assets/global.css");
-import("./DrinkCard.css");
+import("./WaterTracker.css");
 import { Paper } from "@mui/material";
 import waterglass from "../../../../assets/waterglass.png";
 import WaterMeter from "../WaterMeter/WaterMeter";
 import useWindowSize from "../../../../hooks/useWindowSize";
 
-export default function DrinkCard({
+export default function WaterTracker({
   glassAmount,
   setGlassAmount,
   isCalculated,
@@ -28,8 +28,8 @@ export default function DrinkCard({
   };
 
   return (
-    <Paper className="drink-card" elevation={3}>
-      <div className="drink-container">
+    <Paper className="tracker" elevation={3}>
+      <div className="tracker-container">
         <p>
           Normal glass of water is around 1/4 of liters, by clicking the 'DRINK'
           button below you'll drink one glass of water.

@@ -1,10 +1,10 @@
 import("./HomePage.css");
 import { useState, useEffect } from "react";
 
-import WaterMeter from "./components/WaterMeter/WaterMeter";
-import StatCard from "./components/StatsCard/StatsCard";
-import DrinkCard from "./components/DrinkCard/DrinkCard";
+import Calculator from "./components/Calculator/Calculator";
+import WaterTracker from "./components/WaterTracker/WaterTracker";
 import WaterInfo from "./components/WaterInfo/WaterInfo";
+import WaterMeter from "./components/WaterMeter/WaterMeter";
 
 import useWindowSize from "../../hooks/useWindowSize";
 
@@ -35,12 +35,12 @@ export default function HomePage() {
         <WaterMeter percentage={percentage} showPercentage={true} />
       )}
       <div className="home-page-cards">
-        <StatCard
+        <Calculator
           dailyWaterIntake={dailyWaterIntake}
           setDailyWaterIntake={setDailyWaterIntake}
           setIsCalculated={setIsCalculated}
         />
-        <DrinkCard
+        <WaterTracker
           glassAmount={glassAmount}
           setGlassAmount={setGlassAmount}
           isCalculated={isCalculated}

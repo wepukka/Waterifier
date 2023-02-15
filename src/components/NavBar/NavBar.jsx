@@ -47,12 +47,10 @@ export default function NavBar() {
             <p>calculator</p>
             <CalculateIcon sx={{ color: "#283b8b" }} />
           </li>
-          {loading ? (
+          {loading && (
             <li>
               <CircularProgress />
             </li>
-          ) : (
-            <></>
           )}
         </ul>
       </div>
