@@ -14,19 +14,14 @@ import NavBar from "./components/NavBar/NavBar";
 import Shop from "./Views/Shop/Shop";
 
 function App() {
-  const [isShopping, setIsShopping] = useState(false);
   return (
     <div className="App">
       <Router>
-        <NavBar shopping={isShopping} />
+        <NavBar />
         <Routes>
           <Route exact path="*" element={<HomePage />} />
           <Route exact path="/" element={<HomePage />} />
-          <Route
-            exact
-            path="/shop"
-            element={<Shop setIsShopping={setIsShopping} />}
-          />
+          <Route exact path="/shop" element={<Shop />} />
         </Routes>
       </Router>
     </div>

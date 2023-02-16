@@ -9,8 +9,7 @@
 .home-page-cards {
   display: flex;
   flex-direction: row;
-
-  gap: 20px;
+  gap: 10px;
 }
 
 .custom-calc-button {

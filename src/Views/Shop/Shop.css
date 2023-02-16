@@ -2,6 +2,38 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 20px;
-  gap: 10px;
+}
+
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 1280px;
+}
+
+.shop-container > ul {
+  padding: 0;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.shop-container > ul > li {
+  display: inline-block;
+}
+
+.image-link {
+  width: 100%;
+  height: 250px;
+}
+
+.image-link:hover {
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .image-link {
+    width: 100%;
+    height: 150px;
+  }
 }
