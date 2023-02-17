@@ -1,10 +1,9 @@
 const getItemFromLocalStorage = (item) => {
-    let itemFound = localStorage.getItem(item);
-    return itemFound;
-}
+  return localStorage.getItem(item);
+};
 
-const setItemToLocalStorage = (name,data) => {
-    return localStorage.setItem(name,data);
-}
+const setItemToLocalStorage = (name, data) => {
+  return localStorage.setItem(name, data);
+};
 
-export {getItemFromLocalStorage,setItemToLocalStorage}
+export { getItemFromLocalStorage, setItemToLocalStorage };

@@ -4,12 +4,10 @@
   white-space: nowrap;
   margin: 2px;
   text-align: center;
-
 }
 
 .clickable-advertisement > li {
   display: inline-block;
- 
 }
 
 .image-link {
