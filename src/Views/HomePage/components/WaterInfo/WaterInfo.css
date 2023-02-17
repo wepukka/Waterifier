@@ -1,7 +1,9 @@
 .water-info {
   display: flex;
   flex-direction: column;
-  color: white;
+  background-image: url("../../../../assets/h2o70.png");
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .water-info li {
@@ -15,5 +17,11 @@
 @media only screen and (max-width: 600px) {
   .water-info li {
     font-size: 14px;
+  }
+  .water-info-symptoms > p {
+    padding-top: 10px;
+  }
+  .water-info > h1 {
+    display: none;
   }
 }

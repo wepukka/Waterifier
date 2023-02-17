@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar({ shopping }) {
   const navigate = useNavigate();
 
   const [isNavExpanded, setIsNavExpanded] = useState(false);

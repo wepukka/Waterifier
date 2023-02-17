@@ -1,0 +1,16 @@
+.shop {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.shop-container {
+  margin: auto;
+  max-width: 1280px;
+}
+
+.shop-container > ul {
+  padding: 0;
+  overflow: auto;
+  white-space: nowrap;
+}

@@ -15,7 +15,7 @@ export default function WaterInfo() {
 
   const causes = [
     "have diabetes",
-    "have been sick or have diarrhoea",
+    "have been sick or have diarrhea",
     "have been in the sun too long (heatstroke)",
     "have drunk too much alcohol",
     "sweat a lot after exercising",

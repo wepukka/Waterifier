@@ -1,0 +1,12 @@
+.water-rating {
+  margin: 0;
+  padding: 0;
+}
+
+.water-rating li {
+  display: inline;
+}
+
+.water-star {
+  width: 25px;
+}

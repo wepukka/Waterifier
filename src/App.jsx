@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 
 import {
   BrowserRouter as Router,
@@ -10,7 +11,7 @@ import {
 
 import HomePage from "./Views/HomePage/HomePage";
 import NavBar from "./components/NavBar/NavBar";
-import WaterShop from "./Views/WaterShop/waterShop";
+import Shop from "./Views/Shop/Shop";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route exact path="*" element={<HomePage />} />
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/shop" element={<WaterShop />} />
+          <Route exact path="/shop" element={<Shop />} />
         </Routes>
       </Router>
     </div>
