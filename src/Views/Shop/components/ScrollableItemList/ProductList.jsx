@@ -2,49 +2,47 @@ import "./ProductList.css";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import {
-  randomImageNumber,
-  randomProductPrice,
-  randomProductText,
-  randomGoesWellWith,
-} from "./generateProducts.jsx";
+import { products } from "../../../../assets/productData";
 import StarRating from "./WaterRating/WaterRating";
+import { setItemToLocalStorage, getItemFromLocalStorage } from "../../../../utils/localStorage";
 
 export default function ProductList() {
   const path = "src/assets/Bottles/bottle";
-  const [products, setProducts] = useState([]);
 
-  // Create random product array when page mounts
-  const createRandomProducts = async () => {
-    let tempArr = [];
-    for (let i = 0; i <= 19; i++) {
-      tempArr.push({
-        id: i,
-        productName: randomProductText(),
-        productPrice: randomProductPrice(20),
-        image: path + randomImageNumber(12) + ".png",
-        productDetails: {
-          detail1: randomGoesWellWith(),
-          detail2: randomGoesWellWith(),
-          detail3: randomGoesWellWith(),
-          detail4: randomGoesWellWith(),
-        },
-      });
+
+// Add item to local storage with key "cart"
+  const addToCart = (e) => {
+    let cart = getItemFromLocalStorage("cart");
+    if (cart === null) {
+      cart = [];
+    } else {
+      cart = JSON.parse(cart);
     }
-    setProducts(tempArr);
+    
+    // If item is already in cart, increase quantity
+    let itemInCart = cart.find((item) => item.id === parseInt(e.target.id));
+    if (itemInCart) {
+      console.log(itemInCart);
+      itemInCart.quantity++;
+      setItemToLocalStorage("cart", JSON.stringify(cart));
+      return;
+    }
+    let product = products.find((product) => product.id === parseInt(e.target.id));
+    cart.push(product);
+    return setItemToLocalStorage("cart", JSON.stringify(cart));
   };
-
-  useEffect(() => {
-    createRandomProducts();
-  }, []);
 
   return (
     <div className="product-list">
-      {products.length !== 0 &&
+      <div className="product-list-filter">
+        <p>filter</p>
+        <button className="product-list-filter-button">Rating</button>
+      </div>
+      {
         products.map((product, index) => (
           <Paper className="product-card" key={index}>
             <div className="product-card-container">
-              <img width="50" height="100" src={product.image} />
+              <img width="50" height="100" src={path + product.image + ".png"} />
               <div className="product-info-container">
                 <p className="product-name">{product.productName}</p>
                 <p>Goes well with:</p>
@@ -57,7 +55,7 @@ export default function ProductList() {
               </div>
               <div className="star-rating-wrapper">
                 <p style={{ fontSize: "12px" }}>rating</p>
-                <StarRating rating={Math.floor(Math.random() * 5) + 1} />
+                <StarRating rating={product.rating} />
               </div>
               <div className="price-cart-container">
                 <p>Price: {product.productPrice}€</p>

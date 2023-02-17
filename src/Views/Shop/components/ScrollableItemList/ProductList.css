@@ -3,6 +3,25 @@
   flex-direction: column;
   gap: 5px;
 }
+
+.product-list-filter {
+  position: relative;
+  display: flex; 
+  justify-content: center;;
+  width: 100%;
+  background-color: white;
+  height: 50px;
+  border-radius:5px;
+}
+
+.product-list-filter > p  {
+  position: absolute;
+  font-size: 30px;
+  left: 20px;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
 .product-card {
   padding: 20px;
   height: 150px;
@@ -46,12 +65,17 @@
   margin-top: auto;
 }
 
-.price-cart-container > button {
+.price-cart-container > button {  
   width: 100px;
   height: 50px;
   border: none;
   border-radius: 10px;
 }
+
+.price-cart-container > button > svg {
+    pointer-events: none; /* to prevent the svg from being clicked */
+}
+
 .price-cart-container > button:hover {
   cursor: pointer;
   background-color: rgb(186, 188, 192);
