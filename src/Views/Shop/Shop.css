@@ -1,12 +1,7 @@
-.shop {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 
 .shop-container {
-  margin: auto;
   max-width: 1280px;
+  margin: auto;
 }
 
 .shop-container > ul {
