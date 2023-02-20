@@ -19,10 +19,30 @@ import {
 export default function ProductList() {
   const path = "src/assets/Bottles/bottle";
 
-  let originalData = productData;
-  const [products, setProducts] = useState([]);
-  const [isSorted, setIsSorted] = useState(false);
+  let originalData = productData; // Original data from productData.js
+  const [products, setProducts] = useState([]); // Products to be shown on page
   const [pageNumber, setPageNumber] = useState(1);
+  const [isSorted, setIsSorted] = useState(false);
+
+  // Change page number
+  const changePageNumber = (e) => {
+    setPageNumber(parseInt(e.target.id));
+  };
+
+  // Sort products by property and  value asc & desc
+  const sortProductsByProperty = (property, sortValue) => {
+    if (sortValue === "asc") {
+      originalData.sort((a, b) => {
+        return a[property] - b[property];
+      });
+    } else if (sortValue === "desc") {
+      originalData.sort((a, b) => {
+        return b[property] - a[property];
+      });
+    }
+    // To inform useEffect that originalData has changed
+    setIsSorted(!isSorted);
+  };
 
   // Slice products array to show only 10 items depending on page number
   useEffect(() => {
@@ -32,26 +52,6 @@ export default function ProductList() {
     );
     setProducts(slicedProducts);
   }, [pageNumber, isSorted]);
-
-  // Change page number
-  const changePageNumber = (e) => {
-    setPageNumber(parseInt(e.target.id));
-  };
-
-  // Sort products by rating
-  const sortByItemRating = () => {
-    if (isSorted) {
-      originalData.sort((a, b) => {
-        return a.rating - b.rating;
-      });
-      setIsSorted(false);
-    } else {
-      originalData.sort((a, b) => {
-        return b.rating - a.rating;
-      });
-      setIsSorted(true);
-    }
-  };
 
   // add item to cart, if item is already in cart, increase quantity
   const addToCart = (e) => {
@@ -77,13 +77,13 @@ export default function ProductList() {
 
   return (
     <div className="product-list">
-      <ProductFilterBar sortByItemRating={sortByItemRating} />
+      <ProductFilterBar sortProductsByProperty={sortProductsByProperty} />
       {products.map((product, index) => (
         <Paper className="product-card" key={index}>
           <div className="product-card-container">
             <img width="50" height="100" src={path + product.image + ".png"} />
             <div className="product-info-container">
-              <p className="product-name">{product.productName}</p>
+              <p className="product-name">{product.name}</p>
               <p>Goes well with:</p>
               <ul>
                 <li>{product.productDetails.detail1}</li>
@@ -103,7 +103,7 @@ export default function ProductList() {
               <WaterRating rating={product.rating} />
             </div>
             <div className="price-cart-container">
-              <p>Price: {product.productPrice}€</p>
+              <p>Price: {product.price}€</p>
               <button
                 id={product.id}
                 className="product-card-button"
@@ -120,7 +120,6 @@ export default function ProductList() {
       <PageNumbersBar
         arrayLength={originalData.length}
         changePageNumber={changePageNumber}
-        pageNumber={pageNumber}
       />
     </div>
   );

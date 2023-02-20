@@ -1,23 +1,25 @@
 .product-filter-bar {
-  position: relative;
   display: flex;
   justify-content: center;
-  width: 100%;
   background-color: white;
-  height: 50px;
   border-radius: 5px;
+  height: 60px;
+  gap: 20px;
 }
 
-.product-filter-bar > button {
+.product-filter-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-filter-bar-container > p {
+  min-width: 40px;
+}
+
+.product-filter-bar-container > button {
   border: none;
-}
-
-.product-filter-bar > p {
-  position: absolute;
-  font-size: 30px;
-  left: 20px;
-  font-weight: bold;
-  font-variant: small-caps;
+  background: none;
 }
 
 .product-list-page-bar {
@@ -34,4 +36,11 @@
 .current-page {
   background-color: #242424;
   color: white;
+}
+
+@media only screen and (max-width: 400px) {
+  .product-filter-bar {
+    flex-direction: column;
+    gap: 0px;
+  }
 }

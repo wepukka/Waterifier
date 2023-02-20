@@ -1,17 +1,44 @@
 import("./ProductListBars.css");
+import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 
-const ProductFilterBar = ({ sortByItemRating }) => {
+const ProductFilterBar = ({ sortProductsByProperty }) => {
   return (
     <div className="product-filter-bar">
-      <p>sort by</p>
-      <button
-        className="product-list-filter-bar-button"
-        onClick={() => {
-          sortByItemRating();
-        }}
-      >
-        Rating
-      </button>
+      <div className="product-filter-bar-container">
+        <p>rating</p>
+        <button
+          onClick={() => {
+            sortProductsByProperty("rating", "desc");
+          }}
+        >
+          <ArrowCircleUpIcon />
+        </button>
+        <button
+          onClick={() => {
+            sortProductsByProperty("rating", "asc");
+          }}
+        >
+          <ArrowCircleDownIcon />
+        </button>
+      </div>
+      <div className="product-filter-bar-container">
+        <p>price</p>
+        <button
+          onClick={() => {
+            sortProductsByProperty("price", "desc");
+          }}
+        >
+          <ArrowCircleUpIcon />
+        </button>
+        <button
+          onClick={() => {
+            sortProductsByProperty("price", "asc");
+          }}
+        >
+          <ArrowCircleDownIcon />
+        </button>
+      </div>
     </div>
   );
 };

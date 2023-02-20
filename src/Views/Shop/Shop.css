@@ -4,9 +4,3 @@
   max-width: 1000px;
   padding-bottom: 50px;
 }
-
-.shop-container > ul {
-  padding: 0;
-  overflow: auto;
-  white-space: nowrap;
-}
