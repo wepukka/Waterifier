@@ -4,6 +4,11 @@
   gap: 5px;
 }
 
+.product-list button:hover {
+  cursor: pointer;
+  background-color: rgb(186, 188, 192);
+}
+
 .product-list-filter {
   position: relative;
   display: flex;
@@ -12,6 +17,10 @@
   background-color: white;
   height: 50px;
   border-radius: 5px;
+}
+
+.product-list-filter > button {
+  border: none;
 }
 
 .product-list-filter > p {
@@ -45,6 +54,7 @@
 .product-info-container {
   margin-left: 20px;
   width: 300px;
+  height: 100%;
 }
 
 .product-info-container > ul {
@@ -76,10 +86,9 @@
   pointer-events: none; /* to prevent the svg from being clicked */
 }
 
-.price-cart-container > button:hover {
-  cursor: pointer;
-  background-color: rgb(186, 188, 192);
+.product-list-page-bar {
 }
+
 @media only screen and (max-width: 600px) {
   .product-info-container > ul > li {
     font-size: 12px;

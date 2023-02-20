@@ -12,6 +12,7 @@ import {
 import HomePage from "./Views/HomePage/HomePage";
 import NavBar from "./components/NavBar/NavBar";
 import Shop from "./Views/Shop/Shop";
+import NotReady from "./Views/NotReady/NotReady";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route exact path="*" element={<HomePage />} />
+          <Route exact path="*" element={<NotReady />} />
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/shop" element={<Shop />} />
         </Routes>

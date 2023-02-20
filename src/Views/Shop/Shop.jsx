@@ -12,7 +12,14 @@ export default function Shop() {
   return (
     <div className="shop-container">
       <SearchBar />
-      <ClickableAdvertisement images={[shop1, shop2, shop3, shop1, shop3]} />
+      <ClickableAdvertisement
+        data={[
+          { image: shop1, href: "./delivery" },
+          { image: shop2, href: "./sale" },
+          { image: shop3, href: "./limited" },
+          { image: shop2, href: "./sale" },
+        ]}
+      />
       <ProductList />
     </div>
   );

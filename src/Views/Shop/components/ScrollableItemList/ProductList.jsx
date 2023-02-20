@@ -1,18 +1,59 @@
 import "./ProductList.css";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
+import { productData } from "../../../../assets/productData";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { products } from "../../../../assets/productData";
-import WaterRating from "./WaterRating/WaterRating";
+
 import {
   setItemToLocalStorage,
   getItemFromLocalStorage,
 } from "../../../../utils/localStorage";
 
+// Components
+import WaterRating from "./WaterRating/WaterRating";
+import {
+  PageNumbersBar,
+  ProductFilterBar,
+} from "./ProductListBars/ProductListBars";
+
 export default function ProductList() {
   const path = "src/assets/Bottles/bottle";
 
-  // Add item to local storage with key "cart"
+  let originalData = productData;
+  const [products, setProducts] = useState([]);
+  const [isSorted, setIsSorted] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  // Slice products array to show only 10 items depending on page number
+  useEffect(() => {
+    let slicedProducts = originalData.slice(
+      (pageNumber - 1) * 10,
+      pageNumber * 10
+    );
+    setProducts(slicedProducts);
+  }, [pageNumber, isSorted]);
+
+  // Change page number
+  const changePageNumber = (e) => {
+    setPageNumber(parseInt(e.target.id));
+  };
+
+  // Sort products by rating
+  const sortByItemRating = () => {
+    if (isSorted) {
+      originalData.sort((a, b) => {
+        return a.rating - b.rating;
+      });
+      setIsSorted(false);
+    } else {
+      originalData.sort((a, b) => {
+        return b.rating - a.rating;
+      });
+      setIsSorted(true);
+    }
+  };
+
+  // add item to cart, if item is already in cart, increase quantity
   const addToCart = (e) => {
     let cart = getItemFromLocalStorage("cart");
     if (cart === null) {
@@ -25,8 +66,7 @@ export default function ProductList() {
     let itemInCart = cart.find((item) => item.id === parseInt(e.target.id));
     if (itemInCart) {
       itemInCart.quantity++;
-      setItemToLocalStorage("cart", JSON.stringify(cart));
-      return;
+      return setItemToLocalStorage("cart", JSON.stringify(cart));
     }
     let product = products.find(
       (product) => product.id === parseInt(e.target.id)
@@ -37,10 +77,7 @@ export default function ProductList() {
 
   return (
     <div className="product-list">
-      <div className="product-list-filter">
-        <p>filter</p>
-        <button className="product-list-filter-button">Rating</button>
-      </div>
+      <ProductFilterBar sortByItemRating={sortByItemRating} />
       {products.map((product, index) => (
         <Paper className="product-card" key={index}>
           <div className="product-card-container">
@@ -50,9 +87,15 @@ export default function ProductList() {
               <p>Goes well with:</p>
               <ul>
                 <li>{product.productDetails.detail1}</li>
-                <li>{product.productDetails.detail2}</li>
-                <li>{product.productDetails.detail3}</li>
-                <li>{product.productDetails.detail4}</li>
+                {product.productDetails.detail2 ? (
+                  <li>{product.productDetails.detail2}</li>
+                ) : null}
+                {product.productDetails.detail3 ? (
+                  <li>{product.productDetails.detail3}</li>
+                ) : null}
+                {product.productDetails.detail4 ? (
+                  <li>{product.productDetails.detail4}</li>
+                ) : null}
               </ul>
             </div>
             <div className="star-rating-wrapper">
@@ -68,12 +111,17 @@ export default function ProductList() {
                   addToCart(e);
                 }}
               >
-                <AddShoppingCartIcon id={product.id} />
+                <AddShoppingCartIcon />
               </button>
             </div>
           </div>
         </Paper>
       ))}
+      <PageNumbersBar
+        arrayLength={originalData.length}
+        changePageNumber={changePageNumber}
+        pageNumber={pageNumber}
+      />
     </div>
   );
 }

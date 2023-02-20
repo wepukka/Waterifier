@@ -40,14 +40,12 @@ export default function HomePage() {
           setDailyWaterIntake={setDailyWaterIntake}
           setIsCalculated={setIsCalculated}
         />
-
         <WaterTracker
           glassAmount={glassAmount}
           setGlassAmount={setGlassAmount}
           isCalculated={isCalculated}
           percentage={percentage}
         />
-
         <WaterInfo />
       </div>
     </div>
