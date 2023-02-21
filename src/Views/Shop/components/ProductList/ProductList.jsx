@@ -1,7 +1,6 @@
 import "./ProductList.css";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
-import { productData } from "../../../../assets/productData";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import {
@@ -10,48 +9,17 @@ import {
 } from "../../../../utils/localStorage";
 
 // Components
-import WaterRating from "./WaterRating/WaterRating";
-import {
-  PageNumbersBar,
-  ProductFilterBar,
-} from "./ProductListBars/ProductListBars";
+import WaterRating from "../../../components/WaterRating/WaterRating";
 
-export default function ProductList() {
+export default function ProductList({ products, pageNumber }) {
   const path = "src/assets/Bottles/bottle";
-
-  let originalData = productData; // Original data from productData.js
-  const [products, setProducts] = useState([]); // Products to be shown on page
-  const [pageNumber, setPageNumber] = useState(1);
-  const [isSorted, setIsSorted] = useState(false);
-
-  // Change page number
-  const changePageNumber = (e) => {
-    setPageNumber(parseInt(e.target.id));
-  };
-
-  // Sort products by property and  value asc & desc
-  const sortProductsByProperty = (property, sortValue) => {
-    if (sortValue === "asc") {
-      originalData.sort((a, b) => {
-        return a[property] - b[property];
-      });
-    } else if (sortValue === "desc") {
-      originalData.sort((a, b) => {
-        return b[property] - a[property];
-      });
-    }
-    // To inform useEffect that originalData has changed
-    setIsSorted(!isSorted);
-  };
+  const [slicedProducts, setSlicedProducts] = useState([]);
 
   // Slice products array to show only 10 items depending on page number
   useEffect(() => {
-    let slicedProducts = originalData.slice(
-      (pageNumber - 1) * 10,
-      pageNumber * 10
-    );
-    setProducts(slicedProducts);
-  }, [pageNumber, isSorted]);
+    let sliced = products.slice((pageNumber - 1) * 10, pageNumber * 10);
+    setSlicedProducts(sliced);
+  }, [pageNumber, products]);
 
   // add item to cart, if item is already in cart, increase quantity
   const addToCart = (e) => {
@@ -61,13 +29,13 @@ export default function ProductList() {
     } else {
       cart = JSON.parse(cart);
     }
-
     // If item is already in cart, increase quantity
     let itemInCart = cart.find((item) => item.id === parseInt(e.target.id));
     if (itemInCart) {
       itemInCart.quantity++;
       return setItemToLocalStorage("cart", JSON.stringify(cart));
     }
+
     let product = products.find(
       (product) => product.id === parseInt(e.target.id)
     );
@@ -77,8 +45,7 @@ export default function ProductList() {
 
   return (
     <div className="product-list">
-      <ProductFilterBar sortProductsByProperty={sortProductsByProperty} />
-      {products.map((product, index) => (
+      {slicedProducts.map((product, index) => (
         <Paper className="product-card" key={index}>
           <div className="product-card-container">
             <img width="50" height="100" src={path + product.image + ".png"} />
@@ -117,10 +84,6 @@ export default function ProductList() {
           </div>
         </Paper>
       ))}
-      <PageNumbersBar
-        arrayLength={originalData.length}
-        changePageNumber={changePageNumber}
-      />
     </div>
   );
 }

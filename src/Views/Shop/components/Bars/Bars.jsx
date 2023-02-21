@@ -1,22 +1,23 @@
-import("./ProductListBars.css");
+import("./Bars.css");
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+import { sortProductsByProperty } from "../../../../utils/manipulateArrays";
 
-const ProductFilterBar = ({ sortProductsByProperty }) => {
+const ProductFilterBar = ({ products, setProducts }) => {
   return (
     <div className="product-filter-bar">
       <div className="product-filter-bar-container">
         <p>rating</p>
         <button
           onClick={() => {
-            sortProductsByProperty("rating", "desc");
+            sortProductsByProperty(products, "rating", "desc", setProducts);
           }}
         >
           <ArrowCircleUpIcon />
         </button>
         <button
           onClick={() => {
-            sortProductsByProperty("rating", "asc");
+            sortProductsByProperty(products, "rating", "asc", setProducts);
           }}
         >
           <ArrowCircleDownIcon />
@@ -26,14 +27,14 @@ const ProductFilterBar = ({ sortProductsByProperty }) => {
         <p>price</p>
         <button
           onClick={() => {
-            sortProductsByProperty("price", "desc");
+            sortProductsByProperty(products, "price", "desc", setProducts);
           }}
         >
           <ArrowCircleUpIcon />
         </button>
         <button
           onClick={() => {
-            sortProductsByProperty("price", "asc");
+            sortProductsByProperty(products, "price", "asc", setProducts);
           }}
         >
           <ArrowCircleDownIcon />
@@ -43,7 +44,21 @@ const ProductFilterBar = ({ sortProductsByProperty }) => {
   );
 };
 
-const PageNumbersBar = ({ arrayLength, changePageNumber }) => {
+const ProductPageNumberBar = ({
+  scrollTo,
+  scrollRef,
+  arrayLength,
+  changePageNumber,
+}) => {
+  const scrollIntoView = () => {
+    scrollTo(scrollRef);
+  };
+
+  const handleClick = (e) => {
+    changePageNumber(parseInt(e.target.id));
+    toggleCurrentPage(e, pageButtons);
+    scrollIntoView();
+  };
   const pageButtons = document.getElementsByClassName(
     "product-list-page-button"
   );
@@ -68,7 +83,7 @@ const PageNumbersBar = ({ arrayLength, changePageNumber }) => {
               key={index}
               id={index / 10 + 1}
               onClick={(e) => {
-                changePageNumber(e) + toggleCurrentPage(e, pageButtons);
+                handleClick(e);
               }}
             >
               {index / 10 + 1}
@@ -80,4 +95,4 @@ const PageNumbersBar = ({ arrayLength, changePageNumber }) => {
   );
 };
 
-export { ProductFilterBar, PageNumbersBar };
+export { ProductFilterBar, ProductPageNumberBar };

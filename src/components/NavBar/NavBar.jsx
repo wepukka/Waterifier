@@ -1,5 +1,6 @@
 import "./NavBar.css";
 import ShopIcon from "@mui/icons-material/Shop";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import MenuIcon from "@mui/icons-material/Menu";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -39,13 +40,17 @@ export default function NavBar({ shopping }) {
         }
       >
         <ul>
+          <li onClick={() => navigateTo("/")}>
+            <p>calculator</p>
+            <CalculateIcon sx={{ color: "#283b8b" }} />
+          </li>
           <li onClick={() => navigateTo("/shop")}>
             <p>shop</p>
             <ShopIcon sx={{ color: "#283b8b" }} />
           </li>
-          <li onClick={() => navigateTo("/")}>
-            <p>calculator</p>
-            <CalculateIcon sx={{ color: "#283b8b" }} />
+          <li onClick={() => navigateTo("/cart")}>
+            <p>cart</p>
+            <ShoppingCartIcon sx={{ color: "#283b8b" }} />
           </li>
           {loading && (
             <li>
