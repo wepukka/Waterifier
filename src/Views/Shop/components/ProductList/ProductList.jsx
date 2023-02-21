@@ -9,7 +9,7 @@ import {
 } from "../../../../utils/localStorage";
 
 // Components
-import WaterRating from "../../../components/WaterRating/WaterRating";
+import WaterRating from "../../../../components/WaterRating/WaterRating";
 
 export default function ProductList({ products, pageNumber }) {
   const path = "src/assets/Bottles/bottle";
@@ -70,7 +70,7 @@ export default function ProductList({ products, pageNumber }) {
               <WaterRating rating={product.rating} />
             </div>
             <div className="price-cart-container">
-              <p>Price: {product.price}€</p>
+              <p>Price: {parseFloat(product.price).toFixed(2)}€</p>
               <button
                 id={product.id}
                 className="product-card-button"

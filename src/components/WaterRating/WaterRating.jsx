@@ -1,7 +1,7 @@
 import("./WaterRating.css");
 
-import BottleFull from "../../../assets/bottle_full.png";
-import BottleEmpty from "../../../assets/bottle_empty.png";
+import BottleFull from "../../assets/bottle_full.png";
+import BottleEmpty from "../../assets/bottle_empty.png";
 
 export default function WaterRating({ rating }) {
   // Returns water rating based on given
