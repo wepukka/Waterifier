@@ -1,12 +1,15 @@
 import("./ClickableAdvertisement.css");
+import { useNavigate } from "react-router-dom";
 
-export default function ClickableAdvertisement({ images }) {
+export default function ClickableAdvertisement({ data }) {
+  const navigate = useNavigate();
+
   return (
     <ul className="clickable-advertisement">
-      {images.map((image) => {
+      {data.map((data, index) => {
         return (
-          <li>
-            <img className="image-link" src={image} />
+          <li key={index} onClick={() => navigate(data.href)}>
+            <img className="image-link" src={data.image} />
           </li>
         );
       })}

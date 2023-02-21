@@ -3,12 +3,11 @@
   flex-direction: column;
   gap: 5px;
 }
+
 .product-card {
   padding: 20px;
-  align-items: center;
   height: 150px;
   padding-left: 20px;
-  gap: 20px;
   background: linear-gradient(
     90deg,
     #242424 0%,
@@ -22,11 +21,13 @@
   display: flex;
   align-items: center;
   height: 100%;
+  margin-top: auto;
 }
 
 .product-info-container {
   margin-left: 20px;
   width: 300px;
+  height: 100%;
 }
 
 .product-info-container > ul {
@@ -48,15 +49,16 @@
 }
 
 .price-cart-container > button {
-  width: 100px;
+  width: 75px;
   height: 50px;
   border: none;
   border-radius: 10px;
 }
-.price-cart-container > button:hover {
-  cursor: pointer;
-  background-color: rgb(186, 188, 192);
+
+.price-cart-container > button > svg {
+  pointer-events: none; /* to prevent the svg from being clicked */
 }
+
 @media only screen and (max-width: 600px) {
   .product-info-container > ul > li {
     font-size: 12px;

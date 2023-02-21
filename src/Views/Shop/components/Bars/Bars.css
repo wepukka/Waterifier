@@ -1,0 +1,46 @@
+.product-filter-bar {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+  height: 60px;
+  gap: 20px;
+}
+
+.product-filter-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-filter-bar-container > p {
+  min-width: 40px;
+}
+
+.product-filter-bar-container > button {
+  border: none;
+  background: none;
+}
+
+.product-list-page-bar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1px;
+}
+
+.product-list-page-bar > button {
+  width: 50px;
+  height: 50px;
+}
+
+.current-page {
+  background-color: #242424;
+  color: white;
+}
+
+@media only screen and (max-width: 400px) {
+  .product-filter-bar {
+    flex-direction: column;
+    gap: 0px;
+  }
+}

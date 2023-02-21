@@ -1,16 +1,20 @@
-.shop {
+.shop-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  padding-bottom: 50px;
 }
 
-.shop-container {
-  margin: auto;
-  max-width: 1280px;
+.shop-container button:hover {
+  cursor: pointer;
+  background-color: rgb(186, 188, 192);
 }
 
-.shop-container > ul {
-  padding: 0;
-  overflow: auto;
-  white-space: nowrap;
+@media screen and (max-width: 1000px) {
+  .shop-container {
+    width: 100%;
+  }
 }
