@@ -1,17 +1,18 @@
 import("./Cart.css");
 import { useEffect, useState } from "react";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import {
   getItemFromLocalStorage,
   setItemToLocalStorage,
-  removeItemFromLocalStorage,
 } from "../../utils/localStorage";
-
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { LoadingCircleDots } from "../../components/LoadingCircle/LoadingCircle";
 
 export default function Cart() {
   const path = "src/assets/Bottles/bottle";
   const [products, setProducts] = useState([]);
+  const [isRemoving, setIsRemoving] = useState(false);
 
   useEffect(() => {
     const cart = getItemFromLocalStorage("cart");
@@ -19,6 +20,37 @@ export default function Cart() {
       setProducts(JSON.parse(cart));
     }
   }, []);
+
+  useEffect(() => {
+    setItemToLocalStorage("cart", JSON.stringify(products));
+  }, [products]);
+
+  const changeQuantity = (id, type) => {
+    try {
+      let item = products.find((item) => item.id === parseInt(id));
+      if (type === "increase") {
+        item.quantity++;
+      }
+      if (type === "decrease") {
+        item.quantity--;
+        if (item.quantity === 0) {
+          setIsRemoving(true);
+          // if quantity is 0, remove the item from the cart
+          // show a loading animation for 800ms
+          return setTimeout(() => {
+            let filteredProducts = products.filter(
+              (item) => item.id !== parseInt(id)
+            );
+            setProducts([...filteredProducts]);
+            setIsRemoving(false);
+          }, 800);
+        }
+      }
+      return setProducts([...products]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const totalPrice = products.reduce((acc, product) => {
     return acc + product.price * product.quantity;
@@ -39,8 +71,8 @@ export default function Cart() {
       )}
       {products.length > 0 && (
         <div className="cart-items">
-          {products.map((product) => (
-            <div className="cart-item">
+          {products.map((product, index) => (
+            <div className="cart-item" key={index}>
               <div className="cart-item-image">
                 <img src={path + product.image + ".png"} alt={product.name} />
               </div>
@@ -48,11 +80,34 @@ export default function Cart() {
                 <p className="cart-item-name">{product.name}</p>
               </div>
               <div className="cart-item-action">
-                <button className="cart-item-remove" id={product.id}>
-                  -
+                <button
+                  className="cart-item-button"
+                  style={{ position: "relative" }}
+                  id={product.id}
+                  onClick={(e) => {
+                    changeQuantity(e.target.id, "decrease");
+                  }}
+                >
+                  {product.quantity === 0 && isRemoving ? (
+                    <LoadingCircleDots
+                      size="10px"
+                      borderWidth="5px"
+                      animationTime="0.8s"
+                    />
+                  ) : product.quantity === 1 ? (
+                    <DeleteForeverIcon />
+                  ) : (
+                    "-"
+                  )}
                 </button>
                 <p className="cart-item-quantity">{product.quantity}</p>
-                <button className="cart-item-add" id={product.id}>
+                <button
+                  className="cart-item-button"
+                  id={product.id}
+                  onClick={(e) => {
+                    changeQuantity(e.target.id, "increase");
+                  }}
+                >
                   +
                 </button>
               </div>

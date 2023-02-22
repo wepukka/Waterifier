@@ -8,6 +8,12 @@
   padding: 25px;
 }
 
+.cart-container svg {
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+}
+
 .cart-icon-wrapper {
   display: flex;
   justify-content: center;
@@ -90,6 +96,13 @@
   justify-content: center;
 }
 
+.cart-item-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+}
+
 .cart-item-quantity {
   padding: 2px 15px 2px 15px;
   border-radius: 5px;
@@ -129,7 +142,10 @@
     min-width: 80px;
     max-width: 80px;
   }
-  .cart-item-price {
+  .cart-icon-wrapper {
     display: none;
+  }
+  .cart-items {
+    margin-left: 0;
   }
 }

@@ -2,12 +2,10 @@ import "./ProductList.css";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
 import {
   setItemToLocalStorage,
   getItemFromLocalStorage,
 } from "../../../../utils/localStorage";
-
 // Components
 import WaterRating from "../../../../components/WaterRating/WaterRating";
 
