@@ -5,6 +5,7 @@
 }
 
 .product-card {
+  position: relative;
   padding: 20px;
   height: 150px;
   padding-left: 20px;
@@ -32,6 +33,21 @@
 
 .product-info-container > ul {
   margin: 0;
+}
+
+.product-quantity {
+  position: absolute;
+  margin-bottom: auto;
+  font-weight: bold;
+  border: solid 1px black;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: red;
+  color: white;
+  right: 20px;
+  top: 20px;
+  text-align: center;
 }
 
 .product-name {

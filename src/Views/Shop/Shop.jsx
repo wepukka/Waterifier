@@ -10,7 +10,6 @@ import ProductList from "./components/ProductList/ProductList";
 import ClickableAdvertisement from "./components/ClickableAdvertisement/ClickableAdvertisement";
 import { productData } from "../../assets/productData";
 import { ProductFilterBar, ProductPageNumberBar } from "./components/Bars/Bars";
-import { sortProductsByProperty } from "../../utils/manipulateArrays";
 
 export default function Shop() {
   const [products, setProducts] = useState(productData);
@@ -20,9 +19,9 @@ export default function Shop() {
   const changePageNumber = (num) => {
     setPageNumber(num);
   };
-
+  // Top of the page
   const section1 = useRef();
-
+  // Scroll to a section
   function scrollTo(section) {
     section.current.scrollIntoView({ behavior: "smooth" });
   }

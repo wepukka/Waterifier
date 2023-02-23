@@ -28,6 +28,37 @@
   left: 15px;
 }
 
+.cart-clear-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: white;
+  background-color: #2642af;
+  width: 35px;
+  height: 35px;
+  top: 15px;
+  right: 15px;
+}
+
+.cart-clear-icon-wrapper[cart-clear-tooltip]:hover:before {
+  content: attr(cart-clear-tooltip);
+  position: absolute;
+  display: white;
+  background-color: #333; /* Add background color to tooltip */
+  color: white; /* Add text color to tooltip */
+  padding: 5px; /* Add padding to tooltip */
+  text-align: center;
+  width: 70px;
+  right: 0;
+  height: 100%;
+  border-radius: 5px; /* Add border radius to tooltip */
+  font-size: 15px; /* Increase font size of tooltip */
+  cursor: pointer;
+}
+
+/* align empty-cart to bottom of container */
+
 .empty-cart {
   display: flex;
   margin: auto;
@@ -61,57 +92,12 @@
   width: 100%;
 }
 
-.cart-items {
+.cart-products {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-left: 75px;
-}
-
-.cart-item {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  height: 80px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.cart-item > * {
-  margin: auto 0 10px 0;
-}
-
-.cart-item-image > img {
-  width: 40px;
-  height: 60px;
-}
-
-.cart-item-details {
-  min-width: 120px;
-  max-width: 120px;
-}
-
-.cart-item-action {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-}
-
-.cart-item-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-}
-
-.cart-item-quantity {
-  padding: 2px 15px 2px 15px;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-
-.cart-item-price-total {
-  margin-left: auto;
-  font-weight: bold;
+  margin-top: 50px;
 }
 
 .cart-summary {
@@ -131,7 +117,7 @@
   font-weight: bold;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
   .cart-container {
     width: 90%;
   }
@@ -142,10 +128,11 @@
     min-width: 80px;
     max-width: 80px;
   }
-  .cart-icon-wrapper {
-    display: none;
+  .empty-cart {
+    width: 95%;
   }
-  .cart-items {
+
+  .cart-products {
     margin-left: 0;
   }
 }

@@ -12,6 +12,8 @@ import WaterRating from "../../../../components/WaterRating/WaterRating";
 export default function ProductList({ products, pageNumber }) {
   const path = "src/assets/Bottles/bottle";
   const [slicedProducts, setSlicedProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartChanged, setCartChanged] = useState(false); // used to update cart items
 
   // Slice products array to show only 10 items depending on page number
   useEffect(() => {
@@ -31,14 +33,34 @@ export default function ProductList({ products, pageNumber }) {
     let itemInCart = cart.find((item) => item.id === parseInt(e.target.id));
     if (itemInCart) {
       itemInCart.quantity++;
-      return setItemToLocalStorage("cart", JSON.stringify(cart));
+      setItemToLocalStorage("cart", JSON.stringify(cart));
+      return setCartChanged(!cartChanged);
     }
 
     let product = products.find(
       (product) => product.id === parseInt(e.target.id)
     );
     cart.push(product);
-    return setItemToLocalStorage("cart", JSON.stringify(cart));
+    setItemToLocalStorage("cart", JSON.stringify(cart));
+    return setCartChanged(!cartChanged);
+  };
+
+  // Get cart from local storage if changes are made
+  useEffect(() => {
+    let cart = getItemFromLocalStorage("cart");
+    cart = JSON.parse(cart);
+    setCartItems(cart);
+  }, [cartChanged]);
+
+  const AmountOfProductInCart = ({ productId }) => {
+    let item = cartItems.find((item) => item.id === productId);
+    if (item) {
+      return (
+        <div className="product-quantity">
+          <p>{item.quantity}</p>
+        </div>
+      );
+    }
   };
 
   return (
@@ -46,6 +68,7 @@ export default function ProductList({ products, pageNumber }) {
       {slicedProducts.map((product, index) => (
         <Paper className="product-card" key={index}>
           <div className="product-card-container">
+            <AmountOfProductInCart productId={product.id} />
             <img width="50" height="100" src={path + product.image + ".png"} />
             <div className="product-info-container">
               <p className="product-name">{product.name}</p>

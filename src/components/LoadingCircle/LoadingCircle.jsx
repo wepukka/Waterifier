@@ -1,6 +1,6 @@
 import("./LoadingCircle.css");
 
-const LoadingCircleDots = ({
+const LoadingCircle = ({
   size,
   borderWidth,
   color,
@@ -22,4 +22,4 @@ const LoadingCircleDots = ({
   return <div className="loading-circle"></div>;
 };
 
-export { LoadingCircleDots };
+export { LoadingCircle };
