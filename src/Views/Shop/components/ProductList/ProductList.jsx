@@ -2,6 +2,7 @@ import "./ProductList.css";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import useGetCartItems from "../../../../hooks/useGetCartItems";
 import {
   setItemToLocalStorage,
   getItemFromLocalStorage,
@@ -12,8 +13,8 @@ import WaterRating from "../../../../components/WaterRating/WaterRating";
 export default function ProductList({ products, pageNumber }) {
   const path = "src/assets/Bottles/bottle";
   const [slicedProducts, setSlicedProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
-  const [cartChanged, setCartChanged] = useState(false); // used to update cart items
+  const [cartChanged, setCartChanged] = useState(false); // used to update cartItems
+  const cartItems = useGetCartItems(cartChanged);
 
   // Slice products array to show only 10 items depending on page number
   useEffect(() => {
@@ -44,13 +45,6 @@ export default function ProductList({ products, pageNumber }) {
     setItemToLocalStorage("cart", JSON.stringify(cart));
     return setCartChanged(!cartChanged);
   };
-
-  // Get cart from local storage if changes are made
-  useEffect(() => {
-    let cart = getItemFromLocalStorage("cart");
-    cart = JSON.parse(cart);
-    setCartItems(cart);
-  }, [cartChanged]);
 
   const AmountOfProductInCart = ({ productId }) => {
     let item = cartItems.find((item) => item.id === productId);
