@@ -5,7 +5,7 @@ import { LoadingCircle } from "../../../../components/LoadingCircle/LoadingCircl
 
 export default function CartProduct({
   product,
-  isRemoving,
+  isRemovingId,
   imagePath,
   changeQuantity,
 }) {
@@ -26,7 +26,7 @@ export default function CartProduct({
             changeQuantity(e.target.id, "decrease");
           }}
         >
-          {product.quantity === 0 && isRemoving ? (
+          {isRemovingId === product.id ? (
             <LoadingCircle size="10px" borderWidth="5px" animationTime="0.8s" />
           ) : product.quantity === 1 ? (
             <DeleteForeverIcon />
