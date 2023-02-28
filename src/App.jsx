@@ -9,7 +9,7 @@ import {
   redirect,
 } from "react-router-dom";
 
-import HomePage from "./Views/HomePage/HomePage";
+import WaterCalculator from "./Views/WaterCalculator/WaterCalculator";
 import NavBar from "./components/NavBar/NavBar";
 import Shop from "./Views/Shop/Shop";
 import Cart from "./Views/Cart/Cart";
@@ -22,7 +22,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path="*" element={<NotReady />} />
-          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/" element={<WaterCalculator />} />
           <Route exact path="/shop" element={<Shop />} />
           <Route exact path="/cart" element={<Cart />} />
         </Routes>
