@@ -1,6 +1,8 @@
 # Waterifier
 
-Waterifier is simple webpage made with react, and built with vite.
+Waterifier is simple JS-React webpage. Project to learn and be more consistent with js, html, & css.
+
+Got backend with jwt cookie authentication, but is not currently connected.
 
 ## Pages
 
@@ -14,7 +16,7 @@ Waterifier is simple webpage made with react, and built with vite.
 
     Choose to sort & buy different random generated waters.
 
-![alt text](src\assets\git\git_img1.png)
+![alt text](https:youtube.com)
 
     > CART
 
