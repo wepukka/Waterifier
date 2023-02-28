@@ -38,7 +38,7 @@
   width: 35px;
   height: 35px;
   top: 15px;
-  right: 15px;
+  right: 30px;
 }
 
 .cart-clear-icon-wrapper[cart-clear-tooltip]:hover:before {
@@ -108,9 +108,15 @@
   margin-left: auto;
 }
 
-.cart-summary {
-  width: 300px;
-  margin-top: 10px;
+.cart-summary > button {
+  border-radius: 5px;
+  border: none;
+  background-color: #2642af;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+  font-variant: small-caps;
+  cursor: pointer;
 }
 
 .cart-total-price {

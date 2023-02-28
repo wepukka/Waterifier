@@ -13,7 +13,7 @@ export default function Cart() {
   const imagePath = "src/assets/Bottles/bottle";
   const [products, setProducts] = useState([]);
   const [isRemovingId, setIsRemovingId] = useState(null); // id of the product that is being removed from the cart
-        
+
   // get cart from local storage
   useEffect(() => {
     const cart = getItemFromLocalStorage("cart");
@@ -36,7 +36,7 @@ export default function Cart() {
       }
       if (type === "decrease") {
         if (item.quantity === 1) {
-          setIsRemovingId(item.id);    
+          setIsRemovingId(item.id);
           // if quantity is 0, remove the item from the cart
           // show a loading animation for 800ms
           return setTimeout(() => {
@@ -44,10 +44,9 @@ export default function Cart() {
               (item) => item.id !== parseInt(id)
             );
             setProducts([...filteredProducts]);
-            setIsRemovingId(null)    
+            setIsRemovingId(null);
           }, 800);
-        }
-        else {
+        } else {
           item.quantity--;
         }
       }
@@ -111,6 +110,9 @@ export default function Cart() {
           ))}
           <div className="cart-summary">
             <p className="cart-total-price">Total {totalPrice.toFixed(2)} €</p>
+            <button>
+              <p>checkout</p>
+            </button>
           </div>
         </div>
       )}

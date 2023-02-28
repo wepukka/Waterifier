@@ -7,8 +7,9 @@ export default function useGetCartItems(updateValue) {
     let cart = getItemFromLocalStorage("cart");
     if (cart === null) {
       cart = [];
+    } else {
+      cart = JSON.parse(cart);
     }
-    cart = JSON.parse(cart);
 
     setCartItems(cart);
   }, [updateValue]);

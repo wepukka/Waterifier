@@ -16,6 +16,7 @@
     white 99.5%,
     #242424 100%
   );
+  overflow-y: auto;
 }
 
 .product-card-container {
@@ -31,8 +32,8 @@
   height: 100%;
 }
 
-.product-info-container > ul {
-  margin: 0;
+.product-data > ul {
+  margin-top: 0;
 }
 
 .product-quantity {
@@ -87,5 +88,17 @@
   }
   .price-cart-container {
     margin-left: auto;
+  }
+  .price-cart-container > button {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+  }
+  .product-data {
+    font-size: 10px;
+  }
+  .product-card {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

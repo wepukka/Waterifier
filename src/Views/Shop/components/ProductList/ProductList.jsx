@@ -66,20 +66,23 @@ export default function ProductList({ products, pageNumber }) {
             <img width="50" height="100" src={path + product.image + ".png"} />
             <div className="product-info-container">
               <p className="product-name">{product.name}</p>
-              <p>Goes well with:</p>
-              <ul>
-                <li>{product.productDetails.detail1}</li>
-                {product.productDetails.detail2 ? (
-                  <li>{product.productDetails.detail2}</li>
-                ) : null}
-                {product.productDetails.detail3 ? (
-                  <li>{product.productDetails.detail3}</li>
-                ) : null}
-                {product.productDetails.detail4 ? (
-                  <li>{product.productDetails.detail4}</li>
-                ) : null}
-              </ul>
+              <div className="product-data">
+                <p>Goes well with:</p>
+                <ul>
+                  <li>{product.productDetails.detail1}</li>
+                  {product.productDetails.detail2 ? (
+                    <li>{product.productDetails.detail2}</li>
+                  ) : null}
+                  {product.productDetails.detail3 ? (
+                    <li>{product.productDetails.detail3}</li>
+                  ) : null}
+                  {product.productDetails.detail4 ? (
+                    <li>{product.productDetails.detail4}</li>
+                  ) : null}
+                </ul>
+              </div>
             </div>
+
             <div className="star-rating-wrapper">
               <p style={{ fontSize: "12px" }}>rating</p>
               <WaterRating rating={product.rating} />
