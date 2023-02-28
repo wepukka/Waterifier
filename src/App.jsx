@@ -1,63 +1,34 @@
 import "./App.css";
+import { useState } from "react";
 
-import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
-  Navigate,
   Route,
+  Link,
   Routes,
-  useNavigate,
+  redirect,
 } from "react-router-dom";
-import { authenticate } from "./Api/auth";
-import AuthPage from "./Views/AuthPage/AuthPage";
+
 import HomePage from "./Views/HomePage/HomePage";
 import NavBar from "./components/NavBar/NavBar";
+import Shop from "./Views/Shop/Shop";
+import Cart from "./Views/Cart/Cart";
+import NotReady from "./Views/NotReady/NotReady";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const checkAuthStatus = async () => {
-    try {
-      const auth = await authenticate();
-      setLoggedIn(auth.success);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    checkAuthStatus();
-  }, []);
-
-  if (!loggedIn) {
-    return (
-      <div className="App">
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route
-              exact
-              path="/authenticate"
-              element={<AuthPage setLoggedIn={setLoggedIn} />}
-            />
-          </Routes>
-        </Router>
-      </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <Router>
-          <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </Router>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route exact path="*" element={<NotReady />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/cart" element={<Cart />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

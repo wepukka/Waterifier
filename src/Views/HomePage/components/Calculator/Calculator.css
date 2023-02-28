@@ -1,0 +1,32 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  max-width: 500px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(59, 133, 175);
+  max-height: 600px;
+}
+
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 30px 20px 30px;
+
+  gap: 20px;
+}
+
+.input-info {
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.calculator-input div:nth-child(3) {
+  margin-top: 10px;
+}
+
+.calc-button:hover {
+  cursor: pointer;
+}

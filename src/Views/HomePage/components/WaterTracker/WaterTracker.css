@@ -1,0 +1,26 @@
+.tracker {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(59, 133, 175);
+  max-height: 600px;
+}
+
+.tracker-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px 20px 30px;
+
+  gap: 20px;
+}
+
+.glass-images {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 600px) {
+}

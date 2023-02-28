@@ -1,0 +1,9 @@
+.not-ready-page-button {
+  color: white;
+  font-size: 20px;
+}
+
+.not-ready-page-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
