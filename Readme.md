@@ -6,20 +6,20 @@ Got backend with jwt cookie authentication, but is not currently connected.
 
 ## Pages
 
-    > CALCULATOR
+    CALCULATOR
 
     Waterifier calculator lets you calculate your recommended daily water intake, based on your body weight and daily exercise amount.
 
-![alt text](src\assets\git\git_img2.png)
+<img src="public/readme3.png" alt="shop" width="500"/>
 
-    > SHOP
+    SHOP
 
     Choose to sort & buy different random generated waters.
 
-![alt text](https:youtube.com)
+<img src="public/readme1.png" alt="shop" width="500"/>
 
-    > CART
+    CART
 
     Items in cart, shows full cart price and allow to change quantity per item & completely clear cart
 
-![alt text](src\assets\git\git_img3.png)
+<img src="public/readme2.png" alt="shop" width="500"/>
