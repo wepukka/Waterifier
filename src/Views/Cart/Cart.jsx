@@ -65,19 +65,7 @@ export default function Cart() {
     <div className="cart-container">
       {products.length !== 0 && (
         <div className="cart-icon-container">
-          <div className="cart-icon-wrapper">
-            <ShoppingCartIcon />
-            <p
-              style={{
-                position: "absolute",
-                left: "60px",
-                color: "black",
-                fontSize: "30px",
-              }}
-            >
-              cart
-            </p>
-          </div>
+          <p>CART</p>
           <div
             className="cart-clear-icon-wrapper"
             cart-clear-tooltip="Clear cart"
@@ -86,6 +74,7 @@ export default function Cart() {
             }}
           >
             <DeleteSweepIcon />
+            <p>clear cart</p>
           </div>
         </div>
       )}

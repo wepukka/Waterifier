@@ -3,7 +3,6 @@
   width: 1000px;
   margin: 0 auto;
   margin-top: 10px;
-  position: relative;
   border-radius: 10px;
   padding: 25px;
 }
@@ -14,51 +13,23 @@
   height: 20px;
 }
 
-.cart-icon-wrapper {
+.cart-icon-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  border-radius: 25px;
-  color: white;
-  background-color: #2642af;
-  width: 50px;
-  height: 50px;
-  top: 15px;
-  left: 15px;
+  justify-content: space-between;
 }
 
-.cart-clear-icon-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  color: white;
-  background-color: #2642af;
+.cart-clear-icon-wrapper > svg {
   width: 35px;
   height: 35px;
-  top: 15px;
-  right: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
-.cart-clear-icon-wrapper[cart-clear-tooltip]:hover:before {
-  content: attr(cart-clear-tooltip);
-  position: absolute;
-  display: white;
-  background-color: #333; /* Add background color to tooltip */
-  color: white; /* Add text color to tooltip */
-  padding: 5px; /* Add padding to tooltip */
-  text-align: center;
-  width: 70px;
-  right: 0;
-  height: 100%;
-  border-radius: 5px; /* Add border radius to tooltip */
-  font-size: 15px; /* Increase font size of tooltip */
+.cart-clear-icon-wrapper:hover > svg {
+  transform: scale(1.05);
   cursor: pointer;
+  color: #2642af;
 }
-
-/* align empty-cart to bottom of container */
-
 .empty-cart {
   display: flex;
   margin: auto;
@@ -97,7 +68,7 @@
   flex-direction: column;
   gap: 10px;
   margin-left: 75px;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .cart-summary {
