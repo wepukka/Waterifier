@@ -29,6 +29,26 @@
   margin: 0 1rem;
 }
 
+.navigation-user:hover > .navigation-user-hover-menu {
+  display: block;
+}
+
+.navigation-user-hover-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  width: 200px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  display: none;
+}
+
+.navigation-user-hover-menu > p:hover {
+  transform: translate(10px, 0px);
+}
+
 .navigation-menu li:first-child {
   margin-right: 100px;
 }
@@ -94,5 +114,8 @@
   }
   .navigation-menu li:first-child {
     margin-right: 0px;
+  }
+  .navigation-user:hover > .navigation-user-hover-menu {
+    display: none;
   }
 }

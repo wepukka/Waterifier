@@ -1,1 +1,3 @@
-
+.css-1bpw9ma-MuiLinearProgress-root {
+  z-index: -1; /* show the progress bar behind possible elements from navbar */
+}
