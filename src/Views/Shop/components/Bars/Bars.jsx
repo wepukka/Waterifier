@@ -9,6 +9,7 @@ const ProductFilterBar = ({ products, setProducts }) => {
       <div className="product-filter-bar-container">
         <p>rating</p>
         <button
+          id="rating-desc"
           onClick={() => {
             sortProductsByProperty(products, "rating", "desc", setProducts);
           }}
@@ -16,6 +17,7 @@ const ProductFilterBar = ({ products, setProducts }) => {
           <ArrowCircleUpIcon />
         </button>
         <button
+          id="rating-asc"
           onClick={() => {
             sortProductsByProperty(products, "rating", "asc", setProducts);
           }}
@@ -26,6 +28,7 @@ const ProductFilterBar = ({ products, setProducts }) => {
       <div className="product-filter-bar-container">
         <p>price</p>
         <button
+          id="price-desc"
           onClick={() => {
             sortProductsByProperty(products, "price", "desc", setProducts);
           }}
@@ -33,6 +36,7 @@ const ProductFilterBar = ({ products, setProducts }) => {
           <ArrowCircleUpIcon />
         </button>
         <button
+          id="price-asc"
           onClick={() => {
             sortProductsByProperty(products, "price", "asc", setProducts);
           }}
