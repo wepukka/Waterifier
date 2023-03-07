@@ -12,13 +12,11 @@ import { authenticate } from "./api/apiAuth";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const checkAuthStatus = async () => {
     const response = await authenticate();
     if (response.success) {
       setUser(response.user.username);
-      setLoggedIn(true);
     }
   };
 
