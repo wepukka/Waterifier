@@ -44,12 +44,13 @@ export default function NavBar(props) {
       >
         <ul>
           {!props.user ? (
-            <li onClick={() => navigateTo("/auth")}>
+            <li id="nav-login" onClick={() => navigateTo("/auth")}>
               <p>Login</p>
               <LoginIcon sx={{ color: "#283b8b" }} />
             </li>
           ) : (
             <li
+              id="nav-profile"
               className="navigation-user"
               onClick={() => navigateTo("/profile")}
             >
@@ -57,12 +58,14 @@ export default function NavBar(props) {
               <PersonIcon sx={{ color: "#283b8b" }} />
               <div className="navigation-user-hover-menu">
                 <p
+                  id="nav-profile-profile"
                   onClick={(e) => e.stopPropagation() + navigateTo("/profile")}
                 >
                   <PersonIcon sx={{ color: "#283b8b" }} />
                   Profile
                 </p>
                 <p
+                  id="nav-profile-logout"
                   onClick={(e) =>
                     e.stopPropagation() + clearTokens() + props.setUser(null)
                   }
@@ -73,15 +76,15 @@ export default function NavBar(props) {
               </div>
             </li>
           )}
-          <li onClick={() => navigateTo("/")}>
+          <li id="nav-calculator" onClick={() => navigateTo("/")}>
             <p>calculator</p>
             <CalculateIcon sx={{ color: "#283b8b" }} />
           </li>
-          <li onClick={() => navigateTo("/shop")}>
+          <li id="nav-shop" onClick={() => navigateTo("/shop")}>
             <p>shop</p>
             <ShopIcon sx={{ color: "#283b8b" }} />
           </li>
-          <li onClick={() => navigateTo("/cart")}>
+          <li id="nav-cart" onClick={() => navigateTo("/cart")}>
             <p>cart</p>
             <ShoppingCartIcon sx={{ color: "#283b8b" }} />
           </li>
